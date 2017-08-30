@@ -1,21 +1,47 @@
 <!DOCTYPE html>
+
 <html lang="en" class="no-js">
+
 <head>
+
   <meta charset="utf-8" />
+
   <title>Login</title>
-  <link rel="stylesheet" href="{{ base_url }}/plugins/pico_edit/styles.css" type="text/css" />
+
   <meta name="robots" content="noindex, nofollow" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/styles.css" />
+
 </head>
+
 <body>
-  <form id="login-form" method="post" action="">
-    {% if login_error %}<p class="error">{{ login_error }}</p>{% endif %}
-    <div>
-      <label for="password">Password:</label>
+
+  <div class="grid-wrap w-100">
+
+    <div class="grid-item w-100 padding-l margin-top-m">
+
+      <h1>{{ site_title }} Administration</h1>
+
+      <form method="post" action="">
+
+        {% if login_error %}
+
+        <p class="error">{{ login_error }}</p>
+
+        {% endif %}
+
+        <input class="txt-xl" type="password" name="password" id="password" placeholder="Password" autofocus>
+
+        <button type="submit" class="button button-main button-xl txt-l txt-w-700 txt-uppercase margin-top-m">Sign in</button>
+
+      </form>
+
     </div>
-    <div>
-      <input type="password" name="password" id="password" autofocus/>
-      <input type="submit" value="Login" class="btn"/>
-    </div>
-  </form>
+    
+  </div>
+
 </body>
+
 </html>
