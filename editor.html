@@ -12,45 +12,54 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/styles.css" />
+	<link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/normalize.css" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic,greek" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/styles.css?v=4" />
 
 </head>
 
-<body class="grid-wrap w-100 menu-fixed">
+<body>
 
-	<header class="grid-wrap txt-w-500 color-white bg-dark-gray padding-left-m padding-right-m">
-			
-		<div class="grid-item w-30">
+	<div class='grid-wrap'>
+		<div class='grid-item header'>
 
-			<a href="#main-menu" class="menu-toggle">&#9776;</a>
+			<!-- <a href="#main-menu" class="menu-toggle">&#9776;</a> -->
 
-			<h1 class="txt-uppercase txt-w-700 txt-s">
-				<!-- <a href="{{ base_url }}" id="logo"> -->{{ site_title }} Administration<!-- </a> -->
+			<h1>
+
+				{{ site_title }} Administration <a href="{{ base_url }}" id="logo" target="_blank">View Website</a>
+
 			</h1>
 
 		</div>
 
-		<nav id="main-menu" class="controls grid-item w-70 txt-m trans txt-right">
+		<div class="controls">
 
-			<a href="#" class="menu-close bg-black color-white">&#9932;</a>
+			<a href="#" class="new" title="New">+ New Page</a>
 
-			<ul class="txt-uppercase txt-w-700">
+			<a href="#" class="clearcachebutton" title="Clear Cache">Clear Cache</a>
 
-				<li><a href="#" type="button" class="pure-button new" title="New">New +</a></li>
+			<a href="{{ pico_edit_url }}/logout" class="logout" id="logout" title="Logout">Logout</a>
 
-				<li><a href="#" type="button" class="pure-button clearcachebutton" title="Clear Cache">Clear Cache</a></li>
-
-				<li><a href="{{ pico_edit_url }}/logout" type="button" class="pure-button logout" id="logout" title="Logout">Logout</a></li>
-
-			</ul>
-		
 		</div>
 
-	</header>
+		<div class='grid-item content'>
 
-	<section id="main" class="grid-wrap" >
+			<div id="epiceditor"></div>
 
-		<div class="grid-item w-20">
+			<div class="controls">
+
+				<a href="#" class="savebutton" title="Save">Save</a>
+
+				<a href="#preview" id="preview-btn">Preview</a>
+
+				<a href="#edit" id="edit-btn" >Edit</a>
+
+			</div>
+
+		</div>
+
+		<div class='grid-item sidebar'>
 
 			<ul class="nav">
 
@@ -72,9 +81,9 @@
 						
 						<a href="#" data-url="{{ page.id }}" class="post">/{{ page.id }}</a>
 						
-						<a href="#" data-url="{{ page.id }}" class="delete float-right margin-left-s" title="Delete">&#9932;</a>
+						<a href="#" data-url="{{ page.id }}" class="delete" title="Delete Page"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE3NC4yMzkgMTc0LjIzOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTc0LjIzOSAxNzQuMjM5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8cGF0aCBkPSJNODcuMTIsMEMzOS4wODIsMCwwLDM5LjA4MiwwLDg3LjEyczM5LjA4Miw4Ny4xMiw4Ny4xMiw4Ny4xMnM4Ny4xMi0zOS4wODIsODcuMTItODcuMTJTMTM1LjE1NywwLDg3LjEyLDB6IE04Ny4xMiwxNTkuMzA1ICAgYy0zOS44MDIsMC03Mi4xODUtMzIuMzgzLTcyLjE4NS03Mi4xODVTNDcuMzE4LDE0LjkzNSw4Ny4xMiwxNC45MzVzNzIuMTg1LDMyLjM4Myw3Mi4xODUsNzIuMTg1UzEyNi45MjEsMTU5LjMwNSw4Ny4xMiwxNTkuMzA1eiIgZmlsbD0iI0Q4MDAyNyIvPgoJPHBhdGggZD0iTTEyMC44Myw1My40MTRjLTIuOTE3LTIuOTE3LTcuNjQ3LTIuOTE3LTEwLjU1OSwwTDg3LjEyLDc2LjU2OEw2My45NjksNTMuNDE0Yy0yLjkxNy0yLjkxNy03LjY0Mi0yLjkxNy0xMC41NTksMCAgIHMtMi45MTcsNy42NDIsMCwxMC41NTlsMjMuMTUxLDIzLjE1M0w1My40MDksMTEwLjI4Yy0yLjkxNywyLjkxNy0yLjkxNyw3LjY0MiwwLDEwLjU1OWMxLjQ1OCwxLjQ1OCwzLjM2OSwyLjE4OCw1LjI4LDIuMTg4ICAgYzEuOTExLDAsMy44MjQtMC43MjksNS4yOC0yLjE4OEw4Ny4xMiw5Ny42ODZsMjMuMTUxLDIzLjE1M2MxLjQ1OCwxLjQ1OCwzLjM2OSwyLjE4OCw1LjI4LDIuMTg4YzEuOTExLDAsMy44MjEtMC43MjksNS4yOC0yLjE4OCAgIGMyLjkxNy0yLjkxNywyLjkxNy03LjY0MiwwLTEwLjU1OUw5Ny42NzksODcuMTI3bDIzLjE1MS0yMy4xNTNDMTIzLjc0Nyw2MS4wNTcsMTIzLjc0Nyw1Ni4zMzEsMTIwLjgzLDUzLjQxNHoiIGZpbGw9IiNEODAwMjciLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /></a>
 
-						<a href="{{ page.url }}" target="_blank" class="float-right" title="View">View</a>
+						<a href="{{ page.url }}" target="_blank" class="view" title="View Page"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDU3Ny4wMjkgNTc3LjAyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTc3LjAyOSA1NzcuMDI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4OC41MTQsMTQ4LjYyOWM3My43NDYsMCwxMzYuMTYyLDMzLjYxNiwxNzUuNTM5LDYxLjgyMWM0Ni42NTIsMzMuNDE1LDcwLjY2LDY1LjczNyw3Ni44ODUsNzguMDY1ICAgYy02LjIzMiwxMi4zMjctMzAuMjMyLDQ0LjY0OS03Ni44ODUsNzguMDY1Yy0zOS4zNzcsMjguMjA0LTEwMS43OTMsNjEuODItMTc1LjUzOSw2MS44MmMtNzMuNzQ2LDAtMTM2LjE2MS0zMy42MTYtMTc1LjUzOS02MS44MiAgIGMtNDYuNjYxLTMzLjQxNi03MC42Ni02NS43MzgtNzYuODk0LTc4LjA2NWM2LjIzNC0xMi4zMjgsMzAuMjMzLTQ0LjY1LDc2Ljg4NS03OC4wNjUgICBDMTUyLjM1MywxODIuMjQ1LDIxNC43NjgsMTQ4LjYyOSwyODguNTE0LDE0OC42MjkgTTI4OC41MTQsMTEzLjY1N0MxMjkuMTc2LDExMy42NTcsMCwyNTMuNTQzLDAsMjg4LjUxNSAgIHMxMjkuMTc2LDE3NC44NTcsMjg4LjUxNCwxNzQuODU3YzE1OS4zMzksMCwyODguNTE1LTEzOS44ODYsMjg4LjUxNS0xNzQuODU3UzQ0Ny44NTQsMTEzLjY1NywyODguNTE0LDExMy42NTdMMjg4LjUxNCwxMTMuNjU3eiAgICBNMjg4LjUxNCwxODMuNjAxYy01Ny45MzksMC0xMDQuOTE0LDQ2Ljk3NS0xMDQuOTE0LDEwNC45MTRjMCw1Ny45MzgsNDYuOTc1LDEwNC45MTQsMTA0LjkxNCwxMDQuOTE0ICAgczEwNC45MTQtNDYuOTc2LDEwNC45MTQtMTA0LjkxNEMzOTMuNDI4LDIzMC41NzYsMzQ2LjQ1MywxODMuNjAxLDI4OC41MTQsMTgzLjYwMXogTTI2MC4yNjYsMjg4LjUxNSAgIGMtMjQuNTE1LDAtNDQuMzg4LTE5Ljg3My00NC4zODgtNDQuMzg4YzAtMjQuNTE1LDE5Ljg3My00NC4zODcsNDQuMzg4LTQ0LjM4N2MyNC41MTUsMCw0NC4zODgsMTkuODczLDQ0LjM4OCw0NC4zODcgICBDMzA0LjY1NCwyNjguNjQyLDI4NC43ODEsMjg4LjUxNSwyNjAuMjY2LDI4OC41MTV6IiBmaWxsPSIjMDA2REYwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" /></a>
 
 					</li>
 
@@ -84,35 +93,13 @@
 
 		</div>
 
-
-		<!-- Editor -->
-		<div id="epiceditor" class="grid-item w-60"></div>
-
-
-		<div class="controls grid-item w-20 txt-w-700 txt-uppercase	">
-
-			<a href="#" type="button" class="savebutton display-block padding-s bg-success color-white" title="Save">Save</a>
-
-			<a href="#preview" id="preview-btn" class="display-block padding-s bg-info color-white">Preview</a>
-
-			<a href="#edit" id="edit-btn" class="display-block padding-s bg-disable color-white">Edit</a>
-
+		<div class='grid-item footer'>
+			<p>{{ site_title }} Administration</p>
 		</div>
-
-	</section>
-
-<!-- 	<footer class="grid-wrap">
-		
-		<div class="grid-item w-100	bg-dark-gray color-white padding-m">
-			
-			<p class="txt-s">Proudly designed and developed by <a href="https://elegrad.com" target="_blank">Elegrad</a></p>
-
-		</div>
-
-	</footer> -->
+	</div>
 
 	<!-- Save snackbar -->
-	<div id="saving" class="txt-w-500 txt-l bg-success color-white padding-m position-fixed bottom-0 left-0 w-100 trans hidden">Saving...</div>
+	<div id="saving">Saving...</div>
 
 	<script src="{{ base_url }}/plugins/pico_edit/libs/jquery-1.12.3.min.js"></script>
 
@@ -178,7 +165,7 @@
 
 					preview: '{{ base_url }}/plugins/pico_edit/libs/epiceditor/themes/preview/github.css',
 
-					editor: '{{ base_url }}/plugins/pico_edit/libs/epiceditor/themes/editor/epic-dark.css?v=1'
+					editor: '{{ base_url }}/plugins/pico_edit/libs/epiceditor/themes/editor/epic-dark.css'
 
 				},
 
