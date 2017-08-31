@@ -248,6 +248,10 @@ body.loginform button {
 	background: #78909C;
 	color: #fff;
 }
+.controls a.edit-btn,
+.controls a:target {
+	display: none;
+}
 @media only screen and (max-width: 480px) {
 
 
