@@ -12,35 +12,47 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/styles.css" />
+  <link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/normalize.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic,greek" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/styles.css?v=4" />
 
 </head>
 
-<body>
+<body class="loginform">
 
-  <div class="grid-wrap w-100">
+	<div class='grid-wrap'>
 
-    <div class="grid-item w-100 padding-l margin-top-m">
+		<div class='grid-item header'>
 
-      <h1>{{ site_title }} Administration</h1>
+			<h1>
 
-      <form method="post" action="">
+				{{ site_title }} Administration <a href="{{ base_url }}" id="logo" target="_blank">View Website</a>
 
-        {% if login_error %}
+			</h1>
 
-        <p class="error">{{ login_error }}</p>
+		</div>
 
-        {% endif %}
+		<div class='grid-item content'>
 
-        <input class="txt-xl" type="password" name="password" id="password" placeholder="Password" autofocus>
+			<form method="post" action="">
 
-        <button type="submit" class="button button-main button-xl txt-l txt-w-700 txt-uppercase margin-top-m">Sign in</button>
+				<h1>{{ site_title }}<br>Administration</h1>
 
-      </form>
+				{% if login_error %}
 
-    </div>
-    
-  </div>
+				<p class="error">{{ login_error }}</p>
+
+				{% endif %}
+
+				<input type="password" name="password" id="password" placeholder="Password" autofocus>
+
+				<button type="submit" >Sign in</button>
+
+			</form>
+
+		</div>
+
+	</div>
 
 </body>
 
