@@ -38,6 +38,8 @@ Options (Pico "config/config.php"):
 ![Screenshot](https://github.com/chiotis/pico_edit/blob/master/screenshot.jpg)
 ![Screenshot](https://github.com/chiotis/pico_edit/blob/master/screenshot2.jpg)
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Inn_Du4QBsE" frameborder="0" allowfullscreen></iframe>
+
 Editing Pico options
 --------------------
 
