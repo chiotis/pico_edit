@@ -1,11 +1,10 @@
-html { padding:10px; }
+html { padding:20px; }
 
 body {
   border:0;
-  background:rgb(41,41,41);
+  background:#212121;
   font-family:monospace;
   font-size:14px;
-  padding:10px;
   color:#ddd;
   line-height:1.35em;
   margin:0;
