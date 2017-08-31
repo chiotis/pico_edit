@@ -205,6 +205,10 @@ body {
 	opacity: 1;
 	transition: visibility .3s, opacity .3s;
 }
+.footer p a {
+	text-decoration: none;
+	color: #CFD8DC;
+}
 
 body.loginform .content { 
 	background: #CFD8DC;
