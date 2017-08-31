@@ -35,7 +35,8 @@ Options (Pico "config/config.php"):
 	$config['pico_edit_options'] = false;			// Disallow options editing
 	$config['pico_edit_default_author'] = 'Me';		// Default author for new pages
 
-![Screenshot](https://github.com/blocknotes/pico_edit/blob/master/screenshot.png)
+![Screenshot](https://github.com/chiotis/pico_edit/blob/master/screenshot.jpg)
+![Screenshot](https://github.com/chiotis/pico_edit/blob/master/screenshot2.jpg)
 
 Editing Pico options
 --------------------
