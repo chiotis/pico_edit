@@ -205,6 +205,49 @@ body {
 	opacity: 1;
 	transition: visibility .3s, opacity .3s;
 }
+
+body.loginform .content { 
+	background: #CFD8DC;
+	grid-column: 1 / 11;
+  	grid-row: 1 / 3;
+  	height: 100vh;
+
+  	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+}
+body.loginform form {
+	width: 25vw;
+}
+@media all and (max-width: 1024px) {
+	body.loginform form {
+		width: 90vw;
+	}
+}
+body.loginform h1 {
+	color: #37474F;
+}
+body.loginform .error {
+	padding: 20px;
+	background: #b71c1c;
+	color: #fff;
+	border: 1px solid #e57373;
+}
+body.loginform input {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 20px;
+	font-size: 20px;
+}
+body.loginform button {
+	width: 100%;
+	padding: 20px;
+	cursor: pointer;
+	border: none;
+	background: #78909C;
+	color: #fff;
+}
 @media only screen and (max-width: 480px) {
 
 
