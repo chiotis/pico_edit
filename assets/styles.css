@@ -75,7 +75,7 @@ body {
 }
 .header { 
 	grid-area: header; 
-	background: #2A2A2A;
+	background: #333;
 	grid-column: 1 / 9;
   	grid-row: 1 / 2;
 }
@@ -121,10 +121,10 @@ body {
 }
 .sidebar ul li {
 	position: relative;
+	background: #F6F6F6;
 }
 .sidebar ul li a {
 	color: #455A64;
-	background: #F6F6F6;
 	text-decoration: none;
 	display: block;
 	padding: 10px 20px;
@@ -136,6 +136,9 @@ body {
 	position: relative;
 	top: 3px;
 }
+.sidebar ul li:hover {
+	background: #eee;
+}
 .sidebar ul li a.active,
 .sidebar ul li a.active svg {
 	background: #2EAD9B;
@@ -146,16 +149,27 @@ body {
 .sidebar ul li a.view {
 	position: absolute;
 	background: transparent;
+	visibility: hidden;
+	opacity: 0;
 	top: 0;
 	right: 0;
+	padding: 10px;
+}
+.sidebar ul li a.view {
+	right: 40px;
 }
 .sidebar ul li:hover a.delete,
 .sidebar ul li:hover a.view {
 	visibility: visible;
 	opacity: 1;
 }
+.sidebar ul li:hover a.delete:hover,
+.sidebar ul li:hover a.view:hover {
+	background: #222;
+	fill: #fff;
+}
 #epiceditor {
-	height: calc(100% - 50px);
+	height: 100%;
 }
 .controls {
 	grid-area: controls;
