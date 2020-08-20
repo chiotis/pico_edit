@@ -14,7 +14,7 @@
 
 	<link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/normalize.css" />
 	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=cyrillic,greek" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/styles.css?v=4" />
+	<link rel="stylesheet" type="text/css" href="{{ base_url }}/plugins/pico_edit/assets/styles.css?v=4" />
 
 	<link rel="icon" type="image/png" href="{{ base_url }}/plugins/pico_edit/assets/favicon.png"/>
 
@@ -25,17 +25,17 @@
 	<div class='grid-wrap'>
 		<div class='grid-item header'>
 
-			<!-- <a href="#main-menu" class="menu-toggle">&#9776;</a> -->
-
 			<h1>
 
-				{{ site_title }} Administration <a href="{{ base_url }}" id="logo" target="_blank">View Website</a>
+				{{ site_title }} Administration <a href="{{ base_url }}" id="logo" target="_blank" title="Opens in a new tab">View Website</a>
 
 			</h1>
 
 		</div>
 
 		<div class="controls">
+
+			<a href="#" class="savebutton" title="Save">Save</a>
 
 			<a href="#" class="new" title="New">+ New Page</a>
 
@@ -49,16 +49,6 @@
 
 			<div id="epiceditor"></div>
 
-			<div class="controls">
-
-				<a href="#" class="savebutton" title="Save">Save</a>
-
-				<a href="#preview-btn" id="preview-btn">Preview</a>
-
-				<a href="#edit-btn" id="edit-btn" >Edit</a>
-
-			</div>
-
 		</div>
 
 		<div class='grid-item sidebar'>
@@ -67,25 +57,25 @@
 
 				{% if config.pico_edit_options %}
 
-					<li class="padding-s display-block"><a href="#" data-url="conf" class="post page-options"><i>config options</i></a></li>
+					<li><a href="#" data-url="conf" class="post page-options"><i>config options</i></a></li>
 
 				{% endif %} 
 
 				{% if config.pico_edit_404 %}
 
-					<li class="padding-s display-block"><a href="#" data-url="/404" class="post page-404"><i>404</i></a></li>
+					<li><a href="#" data-url="/404" class="post page-404"><i>404</i></a></li>
 
 				{% endif %} 
 
 				{% for page in pages %}
 
-					<li class="padding-xs padding-left-s padding-right-s display-block">
+					<li>
 						
-						<a href="#" data-url="{{ page.id }}" class="post">/{{ page.id }}</a>
+						<a href="#" data-url="{{ page.id }}" class="post"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M5 8v12h14V8H5zm0-2h14V4H5v2zm15 16H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zM7 10h4v4H7v-4zm0 6h10v2H7v-2zm6-5h4v2h-4v-2z"/></svg> {{ page.title }}</a>
 						
-						<a href="#" data-url="{{ page.id }}" class="delete" title="Delete Page"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDE3NC4yMzkgMTc0LjIzOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTc0LjIzOSAxNzQuMjM5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4Ij4KPGc+Cgk8cGF0aCBkPSJNODcuMTIsMEMzOS4wODIsMCwwLDM5LjA4MiwwLDg3LjEyczM5LjA4Miw4Ny4xMiw4Ny4xMiw4Ny4xMnM4Ny4xMi0zOS4wODIsODcuMTItODcuMTJTMTM1LjE1NywwLDg3LjEyLDB6IE04Ny4xMiwxNTkuMzA1ICAgYy0zOS44MDIsMC03Mi4xODUtMzIuMzgzLTcyLjE4NS03Mi4xODVTNDcuMzE4LDE0LjkzNSw4Ny4xMiwxNC45MzVzNzIuMTg1LDMyLjM4Myw3Mi4xODUsNzIuMTg1UzEyNi45MjEsMTU5LjMwNSw4Ny4xMiwxNTkuMzA1eiIgZmlsbD0iI0Q4MDAyNyIvPgoJPHBhdGggZD0iTTEyMC44Myw1My40MTRjLTIuOTE3LTIuOTE3LTcuNjQ3LTIuOTE3LTEwLjU1OSwwTDg3LjEyLDc2LjU2OEw2My45NjksNTMuNDE0Yy0yLjkxNy0yLjkxNy03LjY0Mi0yLjkxNy0xMC41NTksMCAgIHMtMi45MTcsNy42NDIsMCwxMC41NTlsMjMuMTUxLDIzLjE1M0w1My40MDksMTEwLjI4Yy0yLjkxNywyLjkxNy0yLjkxNyw3LjY0MiwwLDEwLjU1OWMxLjQ1OCwxLjQ1OCwzLjM2OSwyLjE4OCw1LjI4LDIuMTg4ICAgYzEuOTExLDAsMy44MjQtMC43MjksNS4yOC0yLjE4OEw4Ny4xMiw5Ny42ODZsMjMuMTUxLDIzLjE1M2MxLjQ1OCwxLjQ1OCwzLjM2OSwyLjE4OCw1LjI4LDIuMTg4YzEuOTExLDAsMy44MjEtMC43MjksNS4yOC0yLjE4OCAgIGMyLjkxNy0yLjkxNywyLjkxNy03LjY0MiwwLTEwLjU1OUw5Ny42NzksODcuMTI3bDIzLjE1MS0yMy4xNTNDMTIzLjc0Nyw2MS4wNTcsMTIzLjc0Nyw1Ni4zMzEsMTIwLjgzLDUzLjQxNHoiIGZpbGw9IiNEODAwMjciLz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8Zz4KPC9nPgo8L3N2Zz4K" /></a>
+						<a href="#" data-url="{{ page.id }}" class="delete" title="Delete Page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M4 8h16v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8zm2 2v10h12V10H6zm3 2h2v6H9v-6zm4 0h2v6h-2v-6zM7 5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v2h5v2H2V5h5zm2-1v1h6V4H9z"/></svg></a>
 
-						<a href="{{ page.url }}" target="_blank" class="view" title="View Page"><img src="data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDU3Ny4wMjkgNTc3LjAyOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTc3LjAyOSA1NzcuMDI5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTI4OC41MTQsMTQ4LjYyOWM3My43NDYsMCwxMzYuMTYyLDMzLjYxNiwxNzUuNTM5LDYxLjgyMWM0Ni42NTIsMzMuNDE1LDcwLjY2LDY1LjczNyw3Ni44ODUsNzguMDY1ICAgYy02LjIzMiwxMi4zMjctMzAuMjMyLDQ0LjY0OS03Ni44ODUsNzguMDY1Yy0zOS4zNzcsMjguMjA0LTEwMS43OTMsNjEuODItMTc1LjUzOSw2MS44MmMtNzMuNzQ2LDAtMTM2LjE2MS0zMy42MTYtMTc1LjUzOS02MS44MiAgIGMtNDYuNjYxLTMzLjQxNi03MC42Ni02NS43MzgtNzYuODk0LTc4LjA2NWM2LjIzNC0xMi4zMjgsMzAuMjMzLTQ0LjY1LDc2Ljg4NS03OC4wNjUgICBDMTUyLjM1MywxODIuMjQ1LDIxNC43NjgsMTQ4LjYyOSwyODguNTE0LDE0OC42MjkgTTI4OC41MTQsMTEzLjY1N0MxMjkuMTc2LDExMy42NTcsMCwyNTMuNTQzLDAsMjg4LjUxNSAgIHMxMjkuMTc2LDE3NC44NTcsMjg4LjUxNCwxNzQuODU3YzE1OS4zMzksMCwyODguNTE1LTEzOS44ODYsMjg4LjUxNS0xNzQuODU3UzQ0Ny44NTQsMTEzLjY1NywyODguNTE0LDExMy42NTdMMjg4LjUxNCwxMTMuNjU3eiAgICBNMjg4LjUxNCwxODMuNjAxYy01Ny45MzksMC0xMDQuOTE0LDQ2Ljk3NS0xMDQuOTE0LDEwNC45MTRjMCw1Ny45MzgsNDYuOTc1LDEwNC45MTQsMTA0LjkxNCwxMDQuOTE0ICAgczEwNC45MTQtNDYuOTc2LDEwNC45MTQtMTA0LjkxNEMzOTMuNDI4LDIzMC41NzYsMzQ2LjQ1MywxODMuNjAxLDI4OC41MTQsMTgzLjYwMXogTTI2MC4yNjYsMjg4LjUxNSAgIGMtMjQuNTE1LDAtNDQuMzg4LTE5Ljg3My00NC4zODgtNDQuMzg4YzAtMjQuNTE1LDE5Ljg3My00NC4zODcsNDQuMzg4LTQ0LjM4N2MyNC41MTUsMCw0NC4zODgsMTkuODczLDQ0LjM4OCw0NC4zODcgICBDMzA0LjY1NCwyNjguNjQyLDI4NC43ODEsMjg4LjUxNSwyNjAuMjY2LDI4OC41MTV6IiBmaWxsPSIjMDA2REYwIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==" /></a>
+						<a href="{{ page.url }}" target="_blank" class="view" title="View Page"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 3c5.392 0 9.878 3.88 10.819 9-.94 5.12-5.427 9-10.819 9-5.392 0-9.878-3.88-10.819-9C2.121 6.88 6.608 3 12 3zm0 16a9.005 9.005 0 0 0 8.777-7 9.005 9.005 0 0 0-17.554 0A9.005 9.005 0 0 0 12 19zm0-2.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9zm0-2a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></a>
 
 					</li>
 
@@ -96,7 +86,7 @@
 		</div>
 
 		<div class='grid-item footer'>
-			<p>{{ site_title }} Administration | <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a></p>
+			<p><a href="http://picocms.org/" target="_blank" >Pico CMS</a> | <a href="https://github.com/chiotis/pico_edit" target="_blank" >Pico Admin</a> | <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet" target="_blank">Markdown Cheatsheet</a></p>
 		</div>
 	</div>
 
@@ -261,9 +251,9 @@
 
 				if (unsaved && !confirm('You have unsaved changes. Are you sure you want to leave this post?')) return false;
 
-				$('.nav .post, .post').removeClass('open');
+				$('.nav .post, .post').removeClass('open active');
 
-				$(this).addClass('open');
+				$(this).addClass('open active');
 
 				var fileUrl = $(this).attr('data-url');
 
