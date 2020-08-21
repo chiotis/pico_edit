@@ -275,6 +275,7 @@ body.loginform input {
 	background:#222;
 	border-radius: 0;
 	border: 1px solid rgba(255,255,255,0.1);
+	color: var(--main);
 }
 body.loginform input:focus,
 body.loginform input:active {
@@ -293,4 +294,85 @@ body.loginform button {
 .controls a.edit-btn,
 .controls a:target {
 	display: none;
+}
+@media only screen and (max-width: 480px) {
+
+
+}
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+
+
+}
+@media only screen and (min-width: 481px) {
+
+}
+
+@media only screen and (max-width: 768px) {
+
+	.hidden-on-phones { display: none; }
+
+	body {
+		max-width: auto;
+		max-height: auto;
+		overflow: auto;
+	}
+
+	.grid-wrap {
+		grid-template-areas: 
+			"header header"
+			"sidebar sidebar"
+			"content content"
+			"footer footer"
+	}
+
+}
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+
+	.hidden-on-tablets { display: none; }
+
+}
+@media only screen and (min-width: 769px) {
+
+
+}
+
+@media only screen and (max-width: 1024px) {
+	
+}
+@media only screen and (min-width: 1025px) and (max-width: 1280px) {}
+@media only screen and (min-width: 1025px) {
+
+	.hidden-on-desktops { display: none; }
+
+	.header { 
+		height: 50px;
+	}
+	.controls { 
+		height: 50px;
+	}
+	.content { 
+		height: calc(100vh - 100px);
+	}
+	.sidebar { 
+		height: calc(100vh - 50px);
+	}
+	.footer { 
+		height: 50px;
+	}
+
+}
+
+@media only screen and (max-width: 1280px) {}
+@media only screen and (min-width: 1281px) and (max-width: 1680px) {}
+@media only screen and (min-width: 1281px) {}
+
+@media only screen and (max-width: 1680px) {}
+@media only screen and (min-width: 1681px) {}
+
+/* different techniques for iPad screening */
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
+	/* For portrait layouts only */
+}
+@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
+	/* For landscape layouts only */
 }
