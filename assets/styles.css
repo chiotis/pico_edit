@@ -51,6 +51,8 @@
 * {
 	box-sizing: border-box;
 }
+::-moz-selection { background: #2EAD9B; color: #fff;}
+::selection { background: #2EAD9B; color: #fff;}
 body {
 	max-width: 100vw;
 	max-height: 100vh;

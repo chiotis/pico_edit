@@ -2,7 +2,7 @@ html { padding:20px; }
 
 body {
   border:0;
-  background:#212121;
+  background:#222;
   font-family:monospace;
   font-size:14px;
   color:#ddd;
@@ -10,3 +10,5 @@ body {
   margin:0;
   padding:0;
 }
+::-moz-selection { background: #2EAD9B; color: #fff;}
+::selection { background: #2EAD9B; color: #fff;}
